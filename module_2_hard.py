@@ -1,19 +1,15 @@
-def find_password(n):
-    pairs = []
-
-    for i in range(1, n):
-        for j in range(i, n):
-            if (i + j) % n == 0:
-                pairs.append(str(i) + str(j))
-
-    result = ''.join(pairs)
-
-    return result
+def get_password(number):
+    password = ''
+    for i in range(1, number):
+        for j in range(2, number):
+            if j <= i:
+                continue
+            if number % (i + j) == 0:
+                password += str(i) + str(j)
+    return password
 
 
-n = int(input("Введите число (от 3 до 20): "))
-if 3 <= n <= 20:
-    result = find_password(n)
-    print("Результат:", result)
-else:
-    print("Введите число в диапазоне от 3 до 20.")
+n = int(input('Введите целое число от 3 до 20: '))
+
+result = get_password(n)
+print('Пароль:', result)
