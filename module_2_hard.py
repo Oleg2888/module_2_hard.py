@@ -1,17 +1,19 @@
 def find_password(n):
     pairs = []
+
     for i in range(1, n):
-        for j in range(i + 1, n):
+        for j in range(i, n):
             if (i + j) % n == 0:
-                pairs.append((i, j))
-    result = ''.join(f'{pair[0]}{pair[1]}' for pair in pairs)
+                pairs.append(str(i) + str(j))
+
+    result = ''.join(pairs)
+
     return result
 
 
-n = int(input("Введите число: "))
-password = find_password(n)
-print("Нужный пароль: ", password)
-
-for n in range(3, 21):
-    password = find_password(n)
-    print(f'{n} - {password}')
+n = int(input("Введите число (от 3 до 20): "))
+if 3 <= n <= 20:
+    result = find_password(n)
+    print("Результат:", result)
+else:
+    print("Введите число в диапазоне от 3 до 20.")
